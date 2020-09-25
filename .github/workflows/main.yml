@@ -19,7 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2\
+      - uses: actions/checkout@v2
       
       - name: Build and push Docker images
         uses: docker/build-push-action@v1.1.1
@@ -27,7 +27,24 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}   
           repository: vijaysamanuri
-          tag_with_ref: true        
+          tag_with_ref: true
+
+      - name: Checkout config repo
+        uses: actions/checkout@v2.3.3
+        with:
+          repository: vijaysamanuri/leeroy-app-config
+          ref: dev
+      
+      - name: update imageTag
+        run: |
+          sed -i "s/{{ image_tag }}/${github.ref}/s" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
+      
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.4.0
+          
+        
+ 
+
  
           
       
