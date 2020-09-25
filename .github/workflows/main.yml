@@ -34,6 +34,7 @@ jobs:
         with:
           repository: vijaysamanuri/leeroy-app-config
           ref: dev
+          path: leeroy-app-config
       
       - name: update imageTag
         run: |
@@ -41,7 +42,6 @@ jobs:
           echo "env variable tag is ${GITHUB_REF##*/}"
           tag="${GITHUB_REF##*/}"
           ls ${GITHUB_WORKSPACE}
-          ls ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
           sed -i "s/{{ image_tag }}/${tag}/g" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
       
       - name: Create Pull Request
