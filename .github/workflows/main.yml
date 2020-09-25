@@ -27,8 +27,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}   
           repository: vijaysamanuri
-          tag_with_ref: # optional
-          add_git_labels: # optional
+          tag_with_ref: true        
+ 
           
       
 
