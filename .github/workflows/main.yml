@@ -38,11 +38,13 @@ jobs:
       
       - name: update imageTag
         run: |
-          echo "tag is ${{ github.ref }}"
-          echo "env variable tag is ${GITHUB_REF##*/}"
+          echo "tag is ${GITHUB_REF##*/}"
           tag="${GITHUB_REF##*/}"
           ls ${GITHUB_WORKSPACE}
           sed -i "s/{{ image_tag }}/${tag}/g" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
+          cd ${GITHUB_WORKSPACE}/leeroy-app-config
+          git add .
+          git commit -m "Update tag ${tag}"
       
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.4.0
