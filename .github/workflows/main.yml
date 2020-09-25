@@ -43,7 +43,6 @@ jobs:
           ls ${GITHUB_WORKSPACE}
           sed -i "s/{{ image_tag }}/${tag}/g" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
           cd ${GITHUB_WORKSPACE}/leeroy-app-config
-          add-and-commit
           git config --global user.email "vijay.samanuri@hyscale.io"
           git config --global user.name "vijaysamanuri"
           git add .
