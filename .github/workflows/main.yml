@@ -37,7 +37,7 @@ jobs:
       
       - name: update imageTag
         run: |
-          sed -i "s/{{ image_tag }}/${github.ref}/s" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
+          sed -i "s/{{ image_tag }}/${github.ref}/g" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
       
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.4.0
