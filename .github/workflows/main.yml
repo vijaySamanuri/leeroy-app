@@ -36,7 +36,7 @@ jobs:
           ref: dev
           path: leeroy-app-config
           persist-credentials: false
-          token: ${{ secretes.PAT_FOR_PUSH }}     
+          token: ${{ secrets.PAT_FOR_PUSH }}     
       - name: update imageTag
         run: |
           echo "tag is ${GITHUB_REF##*/}"
