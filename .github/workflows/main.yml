@@ -56,7 +56,7 @@ jobs:
           path: leeroy-app-config
           committer: vijay rama raju samanuri <vijay.samanuri@hyscale.io>
           author: vijay rama raju samanuri <vijay.samanuri@hyscale.io>
-          token: ${{ secretes.PAT_FOR_PUSH }}
+          token: ${{ secrets.PAT_FOR_PUSH }}
           
         
  
