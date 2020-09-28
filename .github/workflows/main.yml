@@ -43,7 +43,7 @@ jobs:
           tag="${GITHUB_REF##*/}"
           ls ${GITHUB_WORKSPACE}
           echo "Copying leeroy-app developer written hspec to leeroy-app-config config repo..."
-          cp ${GITHUB_WORKSPACE}/leeroy-app.hspec.yaml ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
+          #cp ${GITHUB_WORKSPACE}/leeroy-app.hspec.yaml ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
           ${GITHUB_WORKSPACE}
           echo "Updating Image Tag ${tag} in config repo [leeroy-config-repo]..."
           sed -i "s/tag:.*/tag: ${tag}/g" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
