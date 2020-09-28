@@ -20,7 +20,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+      # TODO make use of build spec and do it
       - name: Build and push Docker images
         uses: docker/build-push-action@v1.1.1
         with:
@@ -42,7 +42,7 @@ jobs:
           echo "tag is ${GITHUB_REF##*/}"
           tag="${GITHUB_REF##*/}"
           ls ${GITHUB_WORKSPACE}
-          echo "Copying leeroy-app deploy spec developer written hspec to leeroy-app-config config repo..."
+          echo "Copying leeroy-app's only deploy spec developer written hspec to leeroy-app-config config repo..."
           #cp ${GITHUB_WORKSPACE}/leeroy-app.hspec.yaml ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
           echo "Updating Image Tag ${tag} in config repo [leeroy-config-repo]..."
           sed -i "s/tag:.*/tag: ${tag}/g" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
@@ -60,6 +60,8 @@ jobs:
           committer: vijay rama raju samanuri <vijay.samanuri@hyscale.io>
           author: vijay rama raju samanuri <vijay.samanuri@hyscale.io>
           token: ${{ secrets.PAT_FOR_PUSH }}
+          
+       #todo:
           
         
  
