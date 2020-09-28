@@ -42,7 +42,11 @@ jobs:
           echo "tag is ${GITHUB_REF##*/}"
           tag="${GITHUB_REF##*/}"
           ls ${GITHUB_WORKSPACE}
-          sed -i "s/{{ image_tag }}/${tag}/g" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
+          echo "Copying leeroy-app developer written hspec to leeroy-app-config config repo..."
+          cp ${GITHUB_WORKSPACE}/leeroy-app.hspec.yaml ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
+          ${GITHUB_WORKSPACE}
+          echo "Updating Image Tag ${tag} in config repo [leeroy-config-repo]..."
+          sed -i "s/tag:.*/tag: ${tag}/g" ${GITHUB_WORKSPACE}/leeroy-app-config/leeroy-app.hspec.yaml
           cd ${GITHUB_WORKSPACE}/leeroy-app-config
           git config --global user.email "vijay.samanuri@hyscale.io"
           git config --global user.name "vijaysamanuri"
