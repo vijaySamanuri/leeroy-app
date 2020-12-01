@@ -33,7 +33,7 @@ jobs:
       - name: Run vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/vijaysamanuri/leeroy-app:${{ image_tag }}'
+          image-ref: 'docker.io/vijaysamanuri/leeroy-app:${{ env.image_tag }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
